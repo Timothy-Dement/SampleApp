@@ -1,16 +1,11 @@
 var express = require('express');
-var fs = require('fs');
-
 var app = express();
+var server = app.listen(3000);
+var io = require('socket.io').listen(server);
 
 app.get('/', function(req, res)
 {
     res.send('<h1 style="padding:25px; font-family:sans-serif">Hello, World!</h1>');
 });
 
-var server = app.listen(8000, 'localhost', function()
-{
-    var host = server.address().address;
-    var port = server.address().port;
-    console.log('Example app listening at http://%s:%s', host, port);
-});
+console.log('\nExample application listening on port 3000\n');
